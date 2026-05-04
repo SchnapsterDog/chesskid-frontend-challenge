@@ -1,53 +1,115 @@
-# Chess.com Front End Programming Challenge
+<br />
+<div>
+  <h1>♟️ Chess.com Frontend Challenge</h1>
+  <p>Vue 3 + SCSS implementation of the Chess.com / ChessKid frontend programming task.</p>
+   <p>
+    🔗 <a href="https://chesskid.netlify.app/" target="_blank"><b>Live Demo</b></a>
+  </p>
+</div>
 
-Vue 3 + SCSS implementation of the Chess.com / ChessKid front-end programming challenge.
+---
 
-## Requirements covered
+## 📌 About the Project
 
-- Page contains a chessboard and sidebar
-- Sidebar appears to the right of the board on desktop
-- Sidebar appears below the board on mobile
-- Chessboard resizes within available viewport space
-- Chessboard remains fully visible with a minimum size of 264x264px
-- Clicking a square highlights it
-- Multiple squares can be highlighted at the same time
-- Sidebar logs clicked squares in click order
-- Clicking an already highlighted square removes the highlight without changing the sidebar log
-- Re-highlighting a square adds a new log entry
-- Unit tests are included
+This project is a responsive chessboard application built with **Vue 3** and **SCSS**, following the requirements defined in the Chess.com frontend challenge.
 
-## Tech stack
+The goal was not only to meet the requirements, but to deliver a **clean, production-ready frontend implementation** with proper structure, responsiveness, and test coverage.
 
-- Vue 3
+---
+
+## ✅ Features
+
+- ♟️ Fully responsive **8x8 chessboard**
+- 📱 Mobile-first layout (sidebar moves below board)
+- 🖥️ Desktop layout (sidebar positioned right)
+- 🎯 Square highlighting with multiple selection support
+- 📝 Click log sidebar with preserved history
+- 🔁 Toggle behavior:
+  - Click → highlight + log
+  - Click again → unhighlight (no log change)
+  - Click again → new log entry
+- 📏 Board always visible with **minimum 264x264**
+- 🧪 Unit tests using **Vitest + Testing Library**
+
+---
+
+## 🧱 Tech Stack
+
+- Vue 3 (Composition API)
 - Vite
-- SCSS
+- SCSS (BEM methodology)
+- CSS Flexbox + Grid layout
 - Vitest
-- Testing Library
+- @testing-library/vue
 
-## Install
+---
 
-```bash
+## ⚙️ Tested Node Versions
+
+The project was tested and verified with:
+
+v20.19.5  
+v22.18.0  
+
+---
+
+## 🚀 Getting Started
+
+### Install dependencies
+
 npm install
-```
 
-## Run locally
+### Run development server
 
-```bash
 npm run dev
-```
 
-## Run tests
+### Run tests
 
-```bash
 npm run test:run
-```
 
-## Build
+### Build for production
 
-```bash
 npm run build
-```
 
-## Notes
+---
 
-The board is generated from file/rank arrays and uses semantic button elements for each square. Highlighted state is stored separately from the clicked-square log to satisfy the requirement that un-highlighting a square should not modify the sidebar log.
+## 🧪 Testing
+
+The project includes unit tests covering:
+
+- Board rendering (64 squares)
+- Highlight behavior
+- Log ordering
+- Toggle behavior (highlight / unhighlight / re-log)
+
+---
+
+## 🧠 Implementation Notes
+
+- Chessboard is generated dynamically using **file/rank arrays**
+- Highlight state is stored separately from the log to match requirements
+- Layout uses **Flexbox + CSS Grid** to guarantee responsiveness
+- SCSS is structured using **BEM methodology** for maintainability and clarity
+- Accessibility considered via:
+  - role="grid" and gridcell
+  - aria-pressed for interaction state
+
+---
+
+## 💡 Approach
+
+The implementation focuses on:
+
+- clarity over over-engineering
+- predictable state management
+- clean component structure
+- strong UX consistency across devices
+
+---
+
+## 👤 Author
+
+Oliver Trajcheski  
+Senior Frontend Engineer  
+Vue / Nuxt / Product-focused development
+oliver@akrinum.com

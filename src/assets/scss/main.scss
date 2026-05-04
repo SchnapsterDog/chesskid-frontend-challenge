@@ -1,0 +1,261 @@
+$board-border: #2f2a24;
+$light-square: #eeeed2;
+$dark-square: #769656;
+$highlight: #ffd94a;
+$text: #262421;
+$muted: #6b665f;
+$page-bg: #f4f1e8;
+$card-bg: rgba(255, 255, 255, 0.92);
+$mobile-breakpoint: 720px;
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  color: $text;
+  background: $page-bg;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+html,
+body,
+#app {
+  width: 100%;
+  height: 100%;
+  min-width: 264px;
+  min-height: 264px;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+}
+
+button {
+  font: inherit;
+}
+
+.challenge-layout {
+  width: 100%;
+  height: 100dvh;
+  min-width: 264px;
+  min-height: 264px;
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  overflow: hidden;
+}
+
+.board-wrapper {
+  flex: 1 1 auto;
+  min-width: 264px;
+  min-height: 264px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.chessboard {
+  width: min(100%, calc(100dvh - 32px));
+  max-width: 100%;
+  max-height: 100%;
+  min-width: 264px;
+  min-height: 264px;
+  aspect-ratio: 1 / 1;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  overflow: hidden;
+  border: 8px solid $board-border;
+  border-radius: 16px;
+  box-shadow: 0 20px 48px rgba(47, 42, 36, 0.22);
+
+  &__square {
+    position: relative;
+    min-width: 0;
+    min-height: 0;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    transition: filter 140ms ease, transform 140ms ease;
+
+    &:hover {
+      filter: brightness(1.06);
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+
+    &:focus-visible {
+      z-index: 2;
+      outline: 4px solid #2e8cff;
+      outline-offset: -4px;
+    }
+
+    &--light {
+      background: $light-square;
+    }
+
+    &--dark {
+      background: $dark-square;
+    }
+
+    &--highlighted::after {
+      content: "";
+      position: absolute;
+      inset: 16%;
+      border-radius: 999px;
+      background: rgba($highlight, 0.78);
+      border: 3px solid rgba($board-border, 0.28);
+      box-shadow: 0 0 0 4px rgba($highlight, 0.2), inset 0 2px 4px rgba(255, 255, 255, 0.36);
+    }
+  }
+
+  &__label {
+    position: absolute;
+    left: 6px;
+    bottom: 5px;
+    font-size: clamp(9px, 1.5vmin, 13px);
+    line-height: 1;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: rgba($board-border, 0.58);
+    pointer-events: none;
+    user-select: none;
+  }
+
+  &__square--dark &__label {
+    color: rgba(255, 255, 255, 0.7);
+  }
+}
+
+.move-log {
+  flex: 0 0 300px;
+  min-width: 240px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba($board-border, 0.12);
+  border-radius: 18px;
+  background: $card-bg;
+  box-shadow: 0 14px 32px rgba($board-border, 0.1);
+
+  &__header {
+    padding: 18px 18px 14px;
+    border-bottom: 1px solid rgba($board-border, 0.12);
+  }
+
+  &__eyebrow {
+    margin: 0 0 8px;
+    color: #6f8f35;
+    font-size: 0.74rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 1.2rem;
+    line-height: 1.2;
+  }
+
+  &__count {
+    margin: 6px 0 0;
+    color: $muted;
+    font-size: 0.92rem;
+  }
+
+  &__list {
+    flex: 1 1 auto;
+    margin: 0;
+    padding: 12px;
+    overflow: auto;
+    list-style: none;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 10px 12px;
+    border-radius: 12px;
+
+    &:nth-child(odd) {
+      background: rgba($board-border, 0.055);
+    }
+  }
+
+  &__number {
+    color: $muted;
+    font-size: 0.86rem;
+    font-weight: 700;
+  }
+
+  &__square {
+    font-size: 1rem;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  &__empty {
+    padding: 18px;
+    color: $muted;
+
+    p {
+      margin: 0;
+    }
+  }
+}
+
+@media (max-width: $mobile-breakpoint) {
+  body {
+    overflow: auto;
+  }
+
+  .challenge-layout {
+    min-height: 100dvh;
+    height: auto;
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;
+    overflow: visible;
+  }
+
+  .board-wrapper {
+    flex: 0 1 auto;
+    width: 100%;
+    min-height: 264px;
+  }
+
+  .chessboard {
+    width: min(100%, calc(100dvh - 232px));
+  }
+
+  .move-log {
+    flex: 0 0 auto;
+    width: 100%;
+    min-width: 0;
+    max-height: 220px;
+  }
+}
+
+@media (max-height: 520px) and (orientation: landscape) {
+  .challenge-layout {
+    padding: 12px;
+  }
+
+  .chessboard {
+    width: min(100%, calc(100dvh - 24px));
+  }
+
+  .move-log {
+    flex-basis: 240px;
+  }
+}

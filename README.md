@@ -2,6 +2,9 @@
 <div>
   <h1>♟️ Chess.com Frontend Challenge</h1>
   <p>Vue 3 + SCSS implementation of the Chess.com / ChessKid frontend programming task.</p>
+   <p>
+    🔗 <a href="https://your-demo-link" target="_blank"><b>Live Demo</b></a>
+  </p>
 </div>
 
 ---

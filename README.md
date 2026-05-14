@@ -1,7 +1,7 @@
 <br />
 <div>
-  <h1>♟️ Chess.com Frontend Challenge</h1>
-  <p>Vue 3 + SCSS implementation of the Chess.com / ChessKid frontend programming task.</p>
+  <h1>♟️ Vue Chess</h1>
+  <p>Vue 3 + SCSS implementation of the Chess</p>
    <p>
     🔗 <a href="https://chesskid.netlify.app/" target="_blank"><b>Live Demo</b></a>
   </p>
